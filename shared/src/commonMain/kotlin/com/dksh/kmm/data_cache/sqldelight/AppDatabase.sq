@@ -1,0 +1,19 @@
+CREATE TABLE ToDoFavorite(
+    id INTEGER NOT NULL PRIMARY KEY,
+    userId INTEGER NOT NULL,
+    title TEXT NOT NULL,
+    completed INTEGER NOT NULL DEFAULT 0
+);
+
+insertToDoFavorite:
+INSERT INTO ToDoFavorite(id, userId, title, completed) VALUES (?,?,?,?);
+
+removeToDoFavorite:
+DELETE FROM ToDoFavorite WHERE id = ?;
+
+selectAllToDoFavorite:
+SELECT * FROM ToDoFavorite;
+
+selectToDoFavoriteById:
+-- SELECT * FROM ToDoFavorite WHERE id = ?;
+SELECT EXISTS(SELECT 1 FROM ToDoFavorite WHERE id = ? LIMIT 1);
